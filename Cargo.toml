@@ -1,14 +1,16 @@
 [package]
-name = "image2tiles"
+name = "image2multires"
 version = "0.1.0"
 edition = "2021"
 authors = ["Franck Barbenoire <contact@franck-barbenoire.fr>"]
-description = "Generate tiles from an image"
+description = "Generate multires tiles from an image"
+readme = "README.rst"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/franckinux/image2multires-rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = "1.0.79"
 clap = { version = "4.4.18", features = ["cargo"] }
 image = "0.24.8"
 thiserror = "1.0.56"

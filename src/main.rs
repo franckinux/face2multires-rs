@@ -1,13 +1,10 @@
 use std::{env, fs};
-// use std::path::{Path, PathBuf};
 use std::path::PathBuf;
 use std::process;
 
-// use anyhow::Result;
 use clap::{Arg, ArgAction, command};
-// use image::io::Reader;
 
-use image2tiles::TileCreator;
+use image2multires::TileCreator;
 
 
 fn main() {
@@ -51,23 +48,13 @@ fn main() {
         }
     }
 
-    println!("{directory:?}");
-    println!("{png_flag:?}");
-    println!("{tile_size:?}");
-
     match TileCreator::new_from_image_path(image_path, directory, tile_size as u32, png_flag) {
         Ok(mut ic) => {
-            println!("{:?}", ic.dest_path);
-            println!("{}", ic.levels);
             match ic.create_tiles() {
                 Ok(_) => {},
-                Err(e) => {
-                    eprintln!("Could not tile image:\n\t {:?}", e);
-                }
+                Err(e) => { eprintln!("{}", e); }
             }
         },
-        Err(e) => {
-            eprintln!("Could not create tiler:\n\t {:?}", e);
-        }
+        Err(e) => { eprintln!("{}", e); }
     }
 }
