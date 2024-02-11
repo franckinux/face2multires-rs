@@ -32,7 +32,9 @@ fn main() {
             .default_value("output")
             .help("Set output directory of tile image files")
         )
-        .arg(Arg::new("image"))
+        .arg(
+            Arg::new("image")
+        ).arg_required_else_help(true)
         .get_matches();
 
     let png_flag = *matches.get_one::<bool>("png").unwrap();
