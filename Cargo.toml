@@ -1,6 +1,6 @@
 [package]
 name = "image2multires"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Franck Barbenoire <contact@franck-barbenoire.fr>"]
 description = "Generate multires tiles from an image"
