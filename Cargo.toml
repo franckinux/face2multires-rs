@@ -14,4 +14,4 @@ keywords = ["cli", "image"]
 [dependencies]
 clap = { version = "4.5.0", features = ["cargo"] }
 image = "0.24.8"
-thiserror = "1.0.56"
+thiserror = "1.0.57"

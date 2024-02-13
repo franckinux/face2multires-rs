@@ -46,3 +46,16 @@ My workflow for generating a parorama is:
    artifacts or hole;
 4. Generate tiles from the cube faces. This is where this program operates;
 5. Delete the original equirectangular image.
+
+# Known issues
+
+The following error may happen:
+
+```
+Unsupported source image: invalid code in LZW stream
+```
+
+This is caused by the underlying libraries. The only workaroud I can suggest is
+to open the image and save it.
+
+See issue https://github.com/image-rs/image-tiff/issues/191.
