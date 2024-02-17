@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
-# requires the vips-tools package to be installed
+# requires the libvips-tools package to be installed
+
+if [[ $# -ne 1 ]]; then
+   echo "Incorrect number of arguments"
+   exit 1
+fi
+
+if [[ ! -d $1 ]]; then
+   echo "The provided argument does not exist or is not a directory"
+   exit 1
+fi
 
 # tile size
 t=512
@@ -18,6 +28,9 @@ mkdir -p $d/fallback
 # face definition: front, back, up, down, left, right
 for f in f b u d l r; do
    image2multires -d $d -s $t $1/$f.tif;
+   if [[ $? -ne 0 ]]; then
+      echo "Error while processing face $f"
+   fi
    vipsthumbnail -s 1024 -o $(readlink -f $d/fallback/$f.jpg) $1/$f.tif
 done
 
